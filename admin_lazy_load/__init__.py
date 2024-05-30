@@ -34,7 +34,7 @@ class LazyLoadAdminMixin(easy.MixinEasyViews, admin.ModelAdmin):
             self.readonly_fields = list(self.readonly_fields) + [field_name]
 
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
 
         def x_lazy(obj, field_name, is_click=False):
 
@@ -95,4 +95,4 @@ class LazyLoadAdminMixin(easy.MixinEasyViews, admin.ModelAdmin):
 
             setattr(self, '%s_lazy_click' % f, func)
 
-        super().__init__(*args, **kwargs)
+        super(LazyLoadAdminMixin, self).__init__(*args, **kwargs)
