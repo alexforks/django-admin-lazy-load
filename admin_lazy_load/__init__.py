@@ -72,7 +72,9 @@ class LazyLoadAdminMixin(easy.MixinEasyViews, admin.ModelAdmin):
                 result = '<img src="/static/admin/img/icon-yes.svg" alt="Yes" />' \
                     if result else \
                     '<img src="/static/admin/img/icon-no.svg" alt="No" />'
-
+                result = format_html(result)
+            elif result is None:
+                result = '<img src="/static/admin/img/icon-unknown.svg" alt="Unknown" />'
                 result = format_html(result)
 
             return HttpResponse(
