@@ -10,7 +10,7 @@ from django.template.loader import render_to_string
 def underscore_to_capitalize(string):
     return string.replace('_', ' ').capitalize()
 
-class LazyLoadAdminMixin(easy.MixinEasyViews, admin.ModelAdmin):
+class LazyLoadAdminMixin(easy.MixinEasyViews):
 
 
     lazy_loaded_fields = ()
