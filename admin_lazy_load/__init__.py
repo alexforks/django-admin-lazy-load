@@ -58,6 +58,8 @@ class LazyLoadAdminMixin(easy.MixinEasyViews, admin.ModelAdmin):
             # do something here
             obj = self.get_object(request, pk)
 
+            if obj is None:
+                return HttpResponse('-')
 
             if hasattr(self, field_name):
                 result = getattr(self, field_name)(obj)
