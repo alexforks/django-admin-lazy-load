@@ -89,13 +89,13 @@ class LazyLoadAdminMixin(easy.MixinEasyViews):
 
 
             func = partial(x_lazy, field_name=f, is_click=False)
-            func.short_description = underscore_to_capitalize(f)
+            func.short_description = getattr(getattr(self, f), 'short_description', underscore_to_capitalize(f))
 
             setattr(self, '%s_lazy' % f, func)
 
 
             func = partial(x_lazy, field_name=f, is_click=True)
-            func.short_description = underscore_to_capitalize(f)
+            func.short_description = getattr(getattr(self, f), 'short_description', underscore_to_capitalize(f))
 
             setattr(self, '%s_lazy_click' % f, func)
 
