@@ -1,3 +1,3 @@
 from setuptools import setup
 
-setup()
+setup(options={'bdist_wheel':{'universal':True}})
